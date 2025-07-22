@@ -53,9 +53,9 @@ const movies: Movie[] = [
  *  hasKey({ title: "Inception", year: 2010 }, "director"); // => false
  */
 function hasKey(obj: object, key: string): boolean {
-  // write your code here...
+  return key in obj;
 
-  return true; // replace true with what you see is fit
+  // replace true with what you see is fit
 }
 
 /**
@@ -64,7 +64,9 @@ function hasKey(obj: object, key: string): boolean {
  * - Logs each movie title provided in the array of movies.
  */
 function printMovieTitles(movies: Movie[]): void {
-  // write your code here...
+  movies.forEach((movie) => {
+    console.log(movie.title);
+  });
 }
 
 /**
@@ -79,9 +81,9 @@ function printMovieTitles(movies: Movie[]): void {
  *   countMoviesByYear(movies, 2025); // => 0
  */
 function countMoviesByYear(movies: Movie[], year: number): number {
-  // write your code here...
+  return movies.filter((movie) => movie.year === year).length;
 
-  return -1; // replace -1 with what you see is fit
+  // replace -1 with what you see is fit
 }
 
 /**
@@ -108,9 +110,12 @@ function updateMovieGenre(
   title: string,
   newGenre: string
 ): Movie[] {
-  // write your code here...
-
-  return []; // replace empty array with what you see is fit
+  movies.forEach((movie) => {
+    if (movie.title === title) {
+      movie.genre = newGenre;
+    }
+  });
+  return movies;
 }
 
 export { Movie, hasKey, printMovieTitles, countMoviesByYear, updateMovieGenre };
